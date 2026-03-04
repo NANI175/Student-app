@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import type React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import type { RouteDoc, Stop } from '../types';
 // ── Component ──────────────────────────────────────
-function HomePage(): JSX.Element {
+function HomePage() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<'route' | 'station'>('route');
   const [routeInput, setRouteInput] = useState<string>('');
@@ -14,7 +15,7 @@ function HomePage(): JSX.Element {
   const [activeBusCount, setActiveBusCount] = useState<string | number>('—');
   const [routeCount, setRouteCount] = useState<string | number>('—');
   const [stations, setStations] = useState<string[]>([]);
-  const [popularRoutes, setPopularRoutes] = useState<{ num: string; name: string }[]>([]);
+  const [popularRoutes, setPopularRoutes] = useState<{ num: string; name: string; busNumbers: string[]; routeId: string }[]>([]);
   const menuBtnRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   // Fetch live stats and route data from Firestore
