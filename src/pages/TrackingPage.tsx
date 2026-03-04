@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import type React from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { db } from '../firebase';
 import busImage from '../assets/bus.png';
