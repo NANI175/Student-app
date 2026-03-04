@@ -1,16 +1,14 @@
-import React, { useState, useEffect, KeyboardEvent } from 'react';
+import { useState, useEffect } from 'react';
+import type React from 'react';
 import { useNavigate } from 'react-router-dom';
-
-function LoginPage(): JSX.Element {
+function LoginPage() {
   const navigate = useNavigate();
-
   const [studentId, setStudentId] = useState<string>('');
-  const [password, setPassword]   = useState<string>('');
-  const [showPw, setShowPw]       = useState<boolean>(false);
-  const [loading, setLoading]     = useState<boolean>(false);
-  const [error, setError]         = useState<boolean>(false);
-  const [btnText, setBtnText]     = useState<string>('Sign In →');
-
+  const [password, setPassword] = useState<string>('');
+  const [showPw, setShowPw] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [btnText, setBtnText] = useState<string>('Sign In →');
   // Handle Enter key globally
   useEffect(() => {
     const handler = (e: globalThis.KeyboardEvent) => {
@@ -19,12 +17,10 @@ function LoginPage(): JSX.Element {
     document.addEventListener('keydown', handler);
     return () => document.removeEventListener('keydown', handler);
   });
-
   function handleLogin(): void {
     if (loading) return;
     setError(false);
     setLoading(true);
-
     setTimeout(() => {
       if (studentId.trim() === 'student' && password.trim() === 'student123') {
         setLoading(false);
@@ -37,16 +33,13 @@ function LoginPage(): JSX.Element {
       }
     }, 900);
   }
-
   return (
     <div className="login-page-body">
       {/* Floating bus decorations */}
       <div className="float-bus">🚌</div>
       <div className="float-bus">🚌</div>
       <div className="float-bus">🚌</div>
-
       <div className="login-wrapper">
-
         {/* ── LEFT PANEL ── */}
         <div className="left-panel">
           <div className="lp-logo">
@@ -60,7 +53,6 @@ function LoginPage(): JSX.Element {
             </div>
             <div className="brand-sub">Student Transport Portal</div>
           </div>
-
           <div className="lp-features">
             <div className="feature-item">
               <div className="feature-icon">📍</div>
@@ -84,10 +76,8 @@ function LoginPage(): JSX.Element {
               </div>
             </div>
           </div>
-
           <div className="lp-footer">© 2025 PathPulse · Vardhaman College of Engineering</div>
         </div>
-
         {/* ── RIGHT PANEL ── */}
         <div className="right-panel">
           <div className="rp-header">
@@ -97,7 +87,6 @@ function LoginPage(): JSX.Element {
             <div className="login-title">Welcome, Student 👋</div>
             <div className="login-sub">Sign in to track your college bus</div>
           </div>
-
           {/* Student ID field */}
           <div className="form-group">
             <label className="form-label">Student ID / Email</label>
@@ -115,7 +104,6 @@ function LoginPage(): JSX.Element {
               />
             </div>
           </div>
-
           {/* Password field */}
           <div className="form-group">
             <label className="form-label">Password</label>
@@ -135,12 +123,10 @@ function LoginPage(): JSX.Element {
               </span>
             </div>
           </div>
-
           {/* Error message */}
           <div className={`error-msg${error ? ' show' : ''}`}>
             ❌ Invalid credentials. Try: student / student123
           </div>
-
           {/* Login button */}
           <button
             className="btn-login"
@@ -149,19 +135,15 @@ function LoginPage(): JSX.Element {
           >
             {loading ? <div className="spinner"></div> : btnText}
           </button>
-
           <div className="admin-link-wrap">
             <a className="admin-link" href="#">⚙️ Admin Portal</a>
           </div>
-
           <div className="demo-hint">
             Demo: ID <b>student</b> &nbsp;·&nbsp; Password <b>student123</b>
           </div>
         </div>
-
       </div>
     </div>
   );
 }
-
 export default LoginPage;
