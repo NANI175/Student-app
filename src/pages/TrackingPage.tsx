@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import type React from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { db } from '../firebase';
 import busImage from '../assets/bus.png';
@@ -58,7 +59,7 @@ async function fetchRoadRoute(stops: Stop[]): Promise<{ distance: number; coords
   return { distance: dist, coords, legDistances };
 }
 // ── Component ──────────────────────────────────
-function TrackingPage(): JSX.Element {
+function TrackingPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const busNumberParam = searchParams.get('bus') || searchParams.get('route') || '';
