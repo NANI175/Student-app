@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import type React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../firebase';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import type { RouteDoc, Stop } from '../types';
 // ── Component ──────────────────────────────────────
 function HomePage() {
